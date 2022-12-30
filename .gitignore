@@ -1,0 +1,5 @@
+.venv
+.vscode
+*__pycache__
+mongoDB_cert.pem
+*DS_Store
