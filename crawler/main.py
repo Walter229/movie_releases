@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/clemens/coding_projects/movie_releases')
+
 from db import db
 from crawler import webcrawling
 import logging
@@ -26,9 +29,14 @@ def run_etl():
     request_list = db.create_bulk_upsert(clean_movie_list)
     
     # Upsert data into MongoDB
-    logging.info(f'Upserting {len(request_list)} movies into MongoDB...')
-    bulk_write_result= mongo_db.bulk_write(request_list, ordered=False)
-    logging.info(f'Upserted {bulk_write_result.upserted_count} documents, {bulk_write_result.matched_count} were already in the DB.')
+    number_movies = len(request_list)
+    if number_movies > 0:
+        logging.info(f'Upserting {len(request_list)} movies into MongoDB...')
+        bulk_write_result= mongo_db.bulk_write(request_list, ordered=False)
+        logging.info(f'Upserted {bulk_write_result.upserted_count} documents, {bulk_write_result.matched_count} were already in the DB.')
+    else:
+        logging.info('No new movies found.')
+    
     
     return
 
