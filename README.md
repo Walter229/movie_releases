@@ -7,6 +7,6 @@ This pipeline is controlled via Airflow and run daily.
 
 
 ## Website
-A simple website is set up using Flasl. Users can register for the newsletter and select the streaming providers that they want to get movie release information for.
+A simple website is set up using Flask. Users can register for the newsletter and select the streaming providers that they want to get movie release information for.
 
 

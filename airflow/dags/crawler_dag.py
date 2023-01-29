@@ -3,12 +3,13 @@ import sys
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 import pendulum
+import os
 
 # Set local timezone
 local_tz = pendulum.timezone("Europe/Amsterdam")
 
 # Extend path to include crawler module
-sys.path.append('/Users/clemens/coding_projects/movie_releases')
+sys.path.append(os.environ['full_path'])
 from crawler import main
 
 # Define default arguments

@@ -1,5 +1,6 @@
 import sys
-sys.path.append('/Users/clemens/coding_projects/movie_releases')
+import os
+sys.path.append(os.environ['full_path'])
 
 from db import db
 from crawler import webcrawling

@@ -3,3 +3,4 @@
 *__pycache__
 mongoDB_cert.pem
 *DS_Store
+.env

@@ -1,13 +1,13 @@
 from pymongo import MongoClient
 from pymongo.operations import UpdateOne
-
+import os
 
 def connect_to_movie_collection():
     # Connect to MovieReleases mongoDB
     uri = "mongodb+srv://moviereleases.gmlyvtu.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
     client = MongoClient(uri,
                         tls=True,
-                        tlsCertificateKeyFile='/Users/clemens/coding_projects/movie_releases/db/mongoDB_cert.pem')
+                        tlsCertificateKeyFile=os.environ['mongoDB_cert'])
     db = client['movieReleases']
     collection = db['movies']
     
