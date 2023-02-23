@@ -9,7 +9,7 @@ import os
 local_tz = pendulum.timezone("Europe/Amsterdam")
 
 # Extend path to include crawler module
-sys.path.append(os.environ['full_path'])
+sys.path.append('/Users/clemens/repositories/movie_releases')
 from crawler import main
 
 # Define default arguments
@@ -27,7 +27,7 @@ dag =  DAG(
     'movie_crawler_dag',
     default_args=default_args,
     description='DAG that runs the movie crawler and uploads the data to MongoDB.',
-    start_date=datetime.datetime(2022,12,29, tzinfo=local_tz),
+    start_date=datetime.datetime(2023,1,29, tzinfo=local_tz),
     schedule_interval='0 17 * * *'
 )
 

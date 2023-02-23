@@ -1,6 +1,7 @@
 import sys
 import os
-sys.path.append(os.environ['full_path'])
+import pickle
+sys.path.append('/Users/clemens/repositories/movie_releases')
 
 from db import db
 from crawler import webcrawling
@@ -24,7 +25,8 @@ def run_etl():
     
     # Scrape current releases
     logging.info('Start webscraping...')
-    clean_movie_list = webcrawling.scrape_current_releases(countries, providers)
+    #clean_movie_list = webcrawling.scrape_current_releases(countries, providers)
+    clean_movie_list = pickle.load(open('clean_movie_list.pickle', 'rb'))
     
     # Create bulk upsert request list
     request_list = db.create_bulk_upsert(clean_movie_list)

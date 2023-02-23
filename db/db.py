@@ -7,7 +7,7 @@ def connect_to_movie_collection():
     uri = "mongodb+srv://moviereleases.gmlyvtu.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
     client = MongoClient(uri,
                         tls=True,
-                        tlsCertificateKeyFile=os.environ['mongoDB_cert'])
+                        tlsCertificateKeyFile='/Users/clemens/repositories/movie_releases/db/mongoDB_cert.pem')
     db = client['movieReleases']
     collection = db['movies']
     
