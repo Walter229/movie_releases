@@ -27,7 +27,7 @@ dag =  DAG(
     'movie_crawler_dag',
     default_args=default_args,
     description='DAG that runs the movie crawler and uploads the data to MongoDB.',
-    start_date=datetime.datetime(2023,1,29, tzinfo=local_tz),
+    start_date=datetime.datetime(2023,1,31, tzinfo=local_tz),
     schedule_interval='0 17 * * *'
 )
 

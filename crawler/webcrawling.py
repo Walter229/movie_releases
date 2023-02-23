@@ -14,12 +14,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 
-options = Options()
-options.add_argument('--headless')  
 
-# Set-Up global Chromedriver
-driver = webdriver.Chrome(options=options)  
-action = webdriver.ActionChains(driver)
 
 def xpath_soup(element):
 
@@ -45,7 +40,7 @@ def xpath_soup(element):
     components.reverse()
     return '/%s' % '/'.join(components)
 
-def check_exists_by_xpath(xpath):
+def check_exists_by_xpath(xpath, driver):
     """
     Helper function that checks whether an element exists on the page
     """
@@ -126,7 +121,7 @@ def get_timeline_links(driver):
     
     return movie_dict
 
-def extract_movie_details(movie_link_dict):
+def extract_movie_details(movie_link_dict, driver):
     """Scrapes movie detail pages and extracts movie information
 
     Args:
@@ -269,6 +264,13 @@ def scrape_current_releases(countries, providers):
         list: List of dictionaries containing the scraped movies
     """
     
+    options = Options()
+    options.add_argument('--headless')  
+
+    # Set-Up global Chromedriver
+    driver = webdriver.Chrome(options=options)  
+    action = webdriver.ActionChains(driver)
+        
     # Loop over all countries and providers
     country_provider_movies = []
     for country in countries:
@@ -293,7 +295,7 @@ def scrape_current_releases(countries, providers):
             if len(movie_link_dict) > 0:
                  
                 # Extract movie details
-                movie_detail_dict = extract_movie_details(movie_link_dict)
+                movie_detail_dict = extract_movie_details(movie_link_dict, driver)
                 
                 # Clean movie details
                 clean_movie_df = clean_movie_data(movie_detail_dict)

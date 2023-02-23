@@ -30,3 +30,12 @@ def create_bulk_upsert(clean_movie_list):
             update={'$set': movie}, upsert=True))
     
     return request_list
+
+def get_all_entries(collection):
+    import pandas as pd
+    
+    # Get all entries from MongoDB
+    all_entries = collection.find()
+    all_entry_df = pd.DataFrame(list(all_entries))
+    
+    return all_entry_df
