@@ -6,7 +6,3 @@ The data pipeline scrapes information about recently released movies from JustWa
 This pipeline is controlled via Airflow and run daily.
 
 
-## Website
-A simple website is set up using Flask. Users can register for the newsletter and select the streaming providers that they want to get movie release information for.
-
-
