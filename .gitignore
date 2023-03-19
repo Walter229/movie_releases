@@ -4,3 +4,9 @@
 mongoDB_cert.pem
 *DS_Store
 .env
+crawler/chromedriver
+backup_only
+top_movies.DB
+logging
+mappings.py
+testing.py
